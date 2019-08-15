@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link active" href="#"
+      >Home <span class="sr-only">(current)</span></a
+    >
+    <a class="nav-item nav-link" href="#">Home</a>
+  </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Reporte de checadas</h1>
+    <p class="lead">Sube la informacion para empezar</p>
+    <hr class="my-2" />
+    <p>Subir datos</p>
+
+    <div class="form-group">
+      <label for="">Cargar reporte </label>
+      <input type="file" (change)="fileChanged($event)" class="form-control" />
+    </div>
+
+    <p class="lead"></p>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <a (click)="imprimirPagina()" class="btn btn-primary btn text-white" role="button">Imprimir</a>
+    </div>
+  </div>
+</div>

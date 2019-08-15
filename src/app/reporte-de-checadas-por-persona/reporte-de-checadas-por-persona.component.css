@@ -1,0 +1,14 @@
+table.delgado td {
+    padding: 0px 5px;
+    white-space: nowrap;
+    font-size: 6pt;
+}
+
+table  th{
+    padding: 0px 5px;
+    font-size: 5pt;
+}
+
+.mini-font {
+    font-size: 10pt;
+}

@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+app-reporte-de-checadas-por-persona {
+  display: none;
+}
+
+@media print {
+  app-reporte-de-checadas-por-persona {
+    display: block;
+  }
+
+  app-pagina-principal {
+    display: none;
+  }
+}

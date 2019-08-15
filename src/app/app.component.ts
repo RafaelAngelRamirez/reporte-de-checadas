@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'reporte-de-checadas';
+
+
+  file: any 
+  fileChanged(algo: any){
+
+    console.log(algo)
+
+
+  }
+  
 }
