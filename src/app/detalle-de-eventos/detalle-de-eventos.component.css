@@ -1,28 +1,21 @@
 @media print {
-    table.delgado td {
-        padding: 0px 5px;
-        white-space: nowrap;
-        font-size: 6pt;
-    }
-    
-    table  th{
-        padding: 0px 5px;
-        font-size: 5pt;
-    }
-    
-    
-    
+  table.delgado td {
+    padding: 0px 5px;
+    white-space: nowrap;
+    font-size: 6pt;
+  }
+
+  table th {
+    padding: 0px 5px;
+    font-size: 5pt;
+  }
 }
 
-/* 
-.mostrar:hover > div  {
-
-    display: block;
+button.calendar,
+button.calendar:active {
+  width: 2.75rem;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAtCAYAAADYxvnjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADkSURBVFhH7dgxCsMwDIXh3v8uHZPN0KHp1K1Dh16kzeKigEC0DxkbKcRGwwcBG+mHbD69P2vuQYRai1BrTaGX2z2fp7Shb3RHqr2PNIXyUobuSLX3kQiVau8jxdDH85XntPwts0KzaQfaLamhNAAN91CKVUOndIVDPdAu1MDUUDTQE2pgEdoCNTA19EjGCEW/xxNqYBHaAjWwMUP3Ppci1OJcGjPUG2pgEdoCNbAxQ/c+lyLU4lwaM9QbamBqqOfDwy/ahRqYGtrNAwShAZ4PETS7FEmKoUcRodYi1FqEWuskdM1fei3d557VAb4AAAAASUVORK5CYII=) !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
 }
-
-div.esconder  {
-    display: none;
-}
-
-
- */

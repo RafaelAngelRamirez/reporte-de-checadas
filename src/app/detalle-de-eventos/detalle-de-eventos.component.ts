@@ -15,6 +15,8 @@ export class DetalleDeEventosComponent implements OnInit {
     [dia: string]: Evento[]
   } = {}
 
+  eventoEditandose: Evento = null
+
   tiposDeEventos = EVENTOS
 
   tiposDeEventosNumeros = Object.values(EVENTOS)
@@ -47,11 +49,82 @@ export class DetalleDeEventosComponent implements OnInit {
     evento.tipoDeEvento = parseInt(e)
   }
 
-  onChangeDate( e, evento: Evento ){
+  onChangeDate(e, evento: Evento) {
+    console.log(e)
+  }
 
+  fechaTemporal: {
+    fecha: { year: number; month: number; day: number }
+    hora: { hour: number; minute: number }
+  } = {
+    fecha: {
+      year: null,
+      month: null,
+      day: null
+    },
+    hora: {
+      hour: null,
+      minute: null
+    }
+  }
 
-    console.log( e )
+  aplicarCambiosAEvento(evento: Evento) {
+    let hora: Date
 
+    hora = new Date(
+      Object.values(this.fechaTemporal.fecha).join("-") +
+        " " +
+        Object.values(this.fechaTemporal.hora).join(":")
+    )
 
+    evento.editar = false
+    evento.hora = hora
+  }
+
+  cancelarCambiosAEvento(ev: Evento) {
+    ev.editar = false
+    this.fechaTemporal = {
+      fecha: {
+        year: null,
+        month: null,
+        day: null
+      },
+      hora: {
+        hour: null,
+        minute: null
+      }
+    }
+
+    this.eventoEditandose = null
+  }
+
+  editarEvento(ev: Evento) {
+    let editar = this.comprobarOtrasEdicionesDeCambios()
+    if (editar) {
+      this.eventoEditandose = ev
+      this.fechaTemporal.fecha.year = ev.hora.getFullYear()
+      this.fechaTemporal.fecha.month = ev.hora.getMonth()
+      this.fechaTemporal.fecha.day = ev.hora.getDay()
+      this.fechaTemporal.hora.hour = ev.hora.getHours()
+      this.fechaTemporal.hora.minute = ev.hora.getMinutes()
+      ev.editar = true
+    }
+  }
+
+  private comprobarOtrasEdicionesDeCambios(): boolean {
+    let editar = true
+
+    if (this.eventoEditandose) {
+      let c = confirm("Hay otro evento editandose. Quieres cancelar?")
+
+      if (c) {
+        this.cancelarCambiosAEvento(this.eventoEditandose)
+        editar = true
+      } else {
+        editar = false
+      }
+    }
+
+    return editar
   }
 }

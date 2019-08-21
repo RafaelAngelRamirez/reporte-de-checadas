@@ -27,6 +27,7 @@ export class Evento {
 
   deserealize(input: this): this{
     Object.assign( this, input)
+    this.hora = new Date( input.hora)
     return this
   }
 }

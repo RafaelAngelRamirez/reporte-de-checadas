@@ -14,6 +14,10 @@ import localePy from "@angular/common/locales/es-MX"
 import { registerLocaleData } from "@angular/common"
 registerLocaleData(localePy, "es-MX")
 
+// ng-boostrap
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -22,9 +26,9 @@ registerLocaleData(localePy, "es-MX")
     PaginaPrincipalComponent,
     EditorDeChecadasComponent,
     DetalleDeEventosComponent,
-    EmpleadoDetalleEdicionComponent
+    EmpleadoDetalleEdicionComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, NgbModule],
   providers: [{ provide: LOCALE_ID, useValue: "es-MX" },],
   bootstrap: [AppComponent]
 })

@@ -22,51 +22,76 @@
             <ng-container *ngIf="ev.tipoDeEvento === i">
               <!-- Son 6 columnas que corresponden a cada evento -->
 
-              <ng-container *ngIf="!ev.editar; else editarEvento">
-                <span (click)="ev.editar = !ev.editar">
-                    {{ ev.hora | date: "HH:mm" }}
+              <ng-container *ngIf="!ev.editar; else editEvent">
+                <span (click)="editarEvento(ev)">
+                  {{ ev.hora | date: "HH:mm" }}
                 </span>
-              </ng-container>
-              <ng-template #editarEvento>
-                <div class="form-group">
-                  <input
-               
 
-                    [ngModel] ="ev.hora | date:'dd/MM/yyyy '" 
-                    (ngModelChange)="ev.hora = $event"
-
-
-                    type="date"
-                    class="form-control"
-                  />
-                </div>
-
-                <a (click)="ev.hora = !ev.hora"  class="btn btn-success ml-1" > ok </a>
-              </ng-template>
-
-              <div class="form-group esconder no-imprimir">
-                <span>
-                  <h6
-                    (click)="eliminarEvento(ev, eventosMes[item])"
-                    title="eliminar"
-                    class="text-danger"
-                  >
-                    <b>X</b>
-                  </h6>
-                  <select
-                    [ngModel]="ev.tipoDeEvento"
-                    (ngModelChange)="onChangeSelection($event, ev)"
-                    class="form-control form-control-sm"
-                    (change)="reordenarEventos(eventosMes[item])"
-                  >
-                    <option
-                      *ngFor="let item of keys(tiposDeEventos)"
-                      [value]="tiposDeEventos[item]"
-                      >{{ item }}</option
+                <div class="form-group esconder no-imprimir">
+                  <span>
+                    <h6
+                      (click)="eliminarEvento(ev, eventosMes[item])"
+                      title="eliminar"
+                      class="text-danger"
                     >
-                  </select>
-                </span>
-              </div>
+                      <b>X</b>
+                    </h6>
+                    <select
+                      [ngModel]="ev.tipoDeEvento"
+                      (ngModelChange)="onChangeSelection($event, ev)"
+                      class="form-control form-control-sm"
+                      (change)="reordenarEventos(eventosMes[item])"
+                    >
+                      <option
+                        *ngFor="let item of keys(tiposDeEventos)"
+                        [value]="tiposDeEventos[item]"
+                        >{{ item }}</option
+                      >
+                    </select>
+                  </span>
+                </div>
+              </ng-container>
+
+              <ng-template #editEvent>
+                <!-- <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="dp"
+                        [(ngModel)]="fechaTemporal.fecha"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary calendar"
+                          (click)="d.toggle()"
+                          type="button"
+                        ></button>
+                      </div>
+                    </div>
+                  </div> -->
+
+                <ngb-timepicker
+                  [(ngModel)]="fechaTemporal.hora"
+                ></ngb-timepicker>
+
+                <a
+                  title='Aplicar los cambios'
+                  (click)="aplicarCambiosAEvento(ev)"
+                  class="btn btn-success text-white ml-1"
+                >
+                  ok
+                </a>
+                <a
+                  title='Cancelar los cambios'
+                  (click)="cancelarCambiosAEvento(ev)"
+                  class="btn btn-danger text-white ml-1"
+                >
+                  x
+                </a>
+              </ng-template>
             </ng-container>
           </ng-container>
         </td>
