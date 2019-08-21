@@ -1,7 +1,7 @@
 <div class="row mini-font">
   <div class="col-12 d-flex justify-content-between align-items-center">
       <div>
-          <b>156</b> Rafael Angel Ramirez 
+          <b>{{empleado.idChecador}}</b> {{empleado.nombre}} {{empleado.apellidos}} 
           Periodo - 2019-04-01 | 2019-07-30
 
       </div>
@@ -13,72 +13,15 @@
 </div>
 
 <div class="row">
-  <div class="col-6" *ngFor="let a of [1, 2, 3, 4]">
-    Mes {{ a }} 
-    <table class="table delgado mr-3">
-      <thead>
-        <tr>
-          <th>Entrada</th>
-          <th>Desayuno Salida</th>
-          <th>Desayuno Entrada</th>
-          <th>Comida Entrada</th>
-          <th>Comida Entrada</th>
-          <th>Salida</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="
-            let i of [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              0,
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              0,
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              0,
-              1
-            ]
-          "
-        >
-          <td>2019-08-01 00:00</td>
-          <td>2019-08-01 00:00</td>
-          <td>2019-08-01 00:00</td>
-          <td>2019-08-01 00:00</td>
-          <td>2019-08-01 00:00</td>
-          <td>2019-08-01 00:00</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="col-6" *ngFor="let mes of llaves(empleado?.eventos?.datos[2019])">
+    {{ mes | titlecase }} 
+    <app-detalle-de-eventos [eventosMes]='empleado?.eventos?.datos[2019][mes]' ></app-detalle-de-eventos>
   </div>
 </div>
 
 
 <div class="row text-center" style='margin-top: 250px'>
   <div class="col-4 offset-4 text-center border-top">
-      Rafael Angel Ramirez Estrada
+      {{empleado.nombre}} {{empleado.apellidos}} 
   </div>
 </div>

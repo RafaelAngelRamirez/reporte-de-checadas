@@ -10,4 +10,19 @@ app-reporte-de-checadas-por-persona {
   app-pagina-principal {
     display: none;
   }
+  
+  .mini-font {
+    font-size: 10pt;
+  }
+
+  .no-imprimir {
+    display: none
+  }
 }
+
+
+.modal-xl {
+
+  width: 95%
+}
+

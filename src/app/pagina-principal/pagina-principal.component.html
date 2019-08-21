@@ -21,9 +21,28 @@
 
     <p class="lead"></p>
   </div>
-  <div class="row">
+
+  <div *ngIf="file" class="row">
     <div class="col-12">
-      <a (click)="imprimirPagina()" class="btn btn-primary btn text-white" role="button">Imprimir</a>
-    </div>
+      <a
+        (click)="procesarDocumento()"
+        class="btn btn-primary btn text-white"
+        role="button"
+        >Generar reporte</a
+      >
+      <a
+        *ngIf="empleados.length > 0"
+        (click)="guardarCambios()"
+        class="ml-3 btn btn-success btn text-white"
+        role="button"
+        >Guardar cambios</a
+      >
+      
   </div>
 </div>
+
+<app-editor-de-checadas
+  [empleados]="empleados"
+  (imprimir)="imprimirPagina($event)"
+>
+</app-editor-de-checadas>

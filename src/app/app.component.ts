@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Empleado } from './models/empleado.model';
 
 @Component({
   selector: 'app-root',
@@ -6,15 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'reporte-de-checadas';
 
 
-  file: any 
-  fileChanged(algo: any){
+  empleadoParaImprimir: Empleado [] = []
 
-    console.log(algo)
-
-
-  }
   
 }

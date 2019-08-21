@@ -1,0 +1,76 @@
+<table class="table delgado mr-3">
+  <thead>
+    <tr>
+      <td>dia</td>
+      <th>Entrada</th>
+      <th>Desayuno Salida</th>
+      <th>Desayuno Entrada</th>
+      <th>Comida Entrada</th>
+      <th>Comida Entrada</th>
+      <th>Salida</th>
+      <th>Revisar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of keys(eventosMes)">
+      <td>
+        {{ eventosMes[item][0]?.hora | date: "EEEE, dd" | titlecase }}
+      </td>
+      <ng-container *ngFor="let i of [0, 1, 2, 3, 4, 5, 6]">
+        <td class="mostrar">
+          <ng-container *ngFor="let ev of eventosMes[item]; let a; of: index">
+            <ng-container *ngIf="ev.tipoDeEvento === i">
+              <!-- Son 6 columnas que corresponden a cada evento -->
+
+              <ng-container *ngIf="!ev.editar; else editarEvento">
+                <span (click)="ev.editar = !ev.editar">
+                    {{ ev.hora | date: "HH:mm" }}
+                </span>
+              </ng-container>
+              <ng-template #editarEvento>
+                <div class="form-group">
+                  <input
+               
+
+                    [ngModel] ="ev.hora | date:'dd/MM/yyyy '" 
+                    (ngModelChange)="ev.hora = $event"
+
+
+                    type="date"
+                    class="form-control"
+                  />
+                </div>
+
+                <a (click)="ev.hora = !ev.hora"  class="btn btn-success ml-1" > ok </a>
+              </ng-template>
+
+              <div class="form-group esconder no-imprimir">
+                <span>
+                  <h6
+                    (click)="eliminarEvento(ev, eventosMes[item])"
+                    title="eliminar"
+                    class="text-danger"
+                  >
+                    <b>X</b>
+                  </h6>
+                  <select
+                    [ngModel]="ev.tipoDeEvento"
+                    (ngModelChange)="onChangeSelection($event, ev)"
+                    class="form-control form-control-sm"
+                    (change)="reordenarEventos(eventosMes[item])"
+                  >
+                    <option
+                      *ngFor="let item of keys(tiposDeEventos)"
+                      [value]="tiposDeEventos[item]"
+                      >{{ item }}</option
+                    >
+                  </select>
+                </span>
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

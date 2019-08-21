@@ -1,0 +1,48 @@
+<ng-container *ngIf="empleados.length">
+  <div class="row">
+    <div class="col-12">
+      <h1>Lista de empleados</h1>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre Completo</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empleado of empleados">
+        <td>
+          <button
+            (click)="modificarEmpleado(empleado)"
+            type="button"
+            class="btn btn-primary btn-sm mr-1"
+            data-toggle="modal"
+            data-target="#detalleChecadas"
+          >
+            {{ empleado.idChecador }}
+          </button>
+
+          <button
+            (click)="imprimirEmpleado(empleado)"
+            type="button"
+            class="btn btn-success btn-sm mr-1"
+           
+          >
+            Imprimir
+          </button>
+        </td>
+        <td>{{ empleado.nombre }} {{ empleado.apellidos }}</td>
+        <td>{{ empleado.esNecesarioRevisar() }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-empleado-detalle-edicion [empleado]="empleadoAModificarODetalles">
+  </app-empleado-detalle-edicion>
+
+
+</ng-container>
